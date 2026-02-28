@@ -1,0 +1,123 @@
+/* ═══ KPI Cards — Premium Glassmorphism ═══ */
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 1200px) {
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .kpi-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Card Base ──────────────────────── */
+.kpi-card {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 18px 20px;
+  box-shadow: var(--shadow-xs);
+  transition: all var(--transition-base);
+  animation: fadeInUp 0.45s ease-out both;
+  cursor: default;
+}
+
+.kpi-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-3px);
+  border-color: transparent;
+}
+
+/* Glow effect on hover */
+.kpi-card__glow {
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity var(--transition-slow);
+  pointer-events: none;
+}
+
+.kpi-card:hover .kpi-card__glow {
+  opacity: 1;
+}
+
+/* Color variants */
+.kpi-card--indigo .kpi-card__glow { background: radial-gradient(circle, rgba(59,130,246,0.08), transparent 70%); }
+.kpi-card--amber  .kpi-card__glow { background: radial-gradient(circle, rgba(245,158,11,0.08), transparent 70%); }
+.kpi-card--red    .kpi-card__glow { background: radial-gradient(circle, rgba(239,68,68,0.08), transparent 70%); }
+.kpi-card--orange .kpi-card__glow { background: radial-gradient(circle, rgba(249,115,22,0.08), transparent 70%); }
+.kpi-card--blue   .kpi-card__glow { background: radial-gradient(circle, rgba(6,182,212,0.08), transparent 70%); }
+.kpi-card--slate  .kpi-card__glow { background: radial-gradient(circle, rgba(100,116,139,0.08), transparent 70%); }
+.kpi-card--green  .kpi-card__glow { background: radial-gradient(circle, rgba(16,185,129,0.08), transparent 70%); }
+.kpi-card--purple .kpi-card__glow { background: radial-gradient(circle, rgba(56,189,248,0.08), transparent 70%); }
+
+/* ── Icon ───────────────────────────── */
+.kpi-card__icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1.2rem;
+  transition: transform var(--transition-base);
+}
+
+.kpi-card:hover .kpi-card__icon-wrap {
+  transform: scale(1.08);
+}
+
+.kpi-card--indigo .kpi-card__icon-wrap { background: #eff6ff; }
+.kpi-card--amber  .kpi-card__icon-wrap { background: #fffbeb; }
+.kpi-card--red    .kpi-card__icon-wrap { background: #fef2f2; }
+.kpi-card--orange .kpi-card__icon-wrap { background: #fff7ed; }
+.kpi-card--blue   .kpi-card__icon-wrap { background: #ecfeff; }
+.kpi-card--slate  .kpi-card__icon-wrap { background: #f1f5f9; }
+.kpi-card--green  .kpi-card__icon-wrap { background: #ecfdf5; }
+.kpi-card--purple .kpi-card__icon-wrap { background: #f0f9ff; }
+
+/* ── Body ───────────────────────────── */
+.kpi-card__body {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.kpi-card__value {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.kpi-card__suffix {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--text-tertiary);
+  margin-left: 4px;
+}
+
+.kpi-card__label {
+  font-size: 0.74rem;
+  color: var(--text-tertiary);
+  font-weight: 500;
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
